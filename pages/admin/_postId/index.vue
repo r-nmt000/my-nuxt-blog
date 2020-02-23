@@ -13,6 +13,7 @@
 
   export default {
     name: "index",
+    layout: "admin",
     components: {AdminPostForm},
     data() {
       return {

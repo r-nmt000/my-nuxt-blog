@@ -12,11 +12,13 @@
 </template>
 
 <script>
-    import PostList from "@/components/posts/PostList";
-    export default {
-        name: "index",
-      components: {PostList}
-    }
+  import PostList from "@/components/posts/PostList";
+
+  export default {
+    name: "index",
+    layout: "admin",
+    components: {PostList}
+  }
 </script>
 
 <style scoped>

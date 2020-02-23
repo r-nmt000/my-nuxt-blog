@@ -9,6 +9,7 @@
   import AdminPostForm from "@/components/admin/AdminPostForm";
     export default {
       name: "index",
+      layout: "admin",
       components: {AdminPostForm},
 
     }
