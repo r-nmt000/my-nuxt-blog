@@ -1,22 +1,24 @@
 <template>
   <div class="post-page">
-
+    <PostList/>
   </div>
 
 </template>
 
 <script>
-    export default {
-        name: "index"
+  import PostList from "../../components/posts/PostList";
+  export default {
+    name: "index",
+    components: {
+      PostList,
     }
+  }
 </script>
 
 <style scoped>
   .post-page {
     display: flex;
     justify-content: center;
-    align-items: center
-  ;
+    align-items: center;
   }
-
 </style>
