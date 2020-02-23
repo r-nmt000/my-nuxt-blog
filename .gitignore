@@ -127,4 +127,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+node_modules/
+
 # End of https://www.gitignore.io/api/jetbrains+all,osx,nuxt
