@@ -3,14 +3,48 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <PostList/>
+    <PostList :posts="loadedPosts"/>
   </div>
 </template>
 
 <script>
-  import PostList from "../components/posts/PostList";
+  import PostList from "@/components/posts/PostList";
   export default {
-    components: {PostList}
+    components: {PostList},
+    asyncData(context, callback) {
+      setTimeout(() => {
+        callback(null, {
+          loadedPosts: [
+            {
+              id: "1",
+              title: "First post",
+              previewText: "aaaab",
+              thumbnail: "aaaa"
+            },
+            {
+              id: "2",
+              title: "Second post",
+              previewText: "aaaa",
+              thumbnail: "aaaa"
+            },
+            {
+              id: "3",
+              title: "Third post",
+              previewText: "aaaa",
+              thumbnail: "aaaa"
+            },
+            {
+              id: "4",
+              title: "Fourth post",
+              previewText: "aaaa",
+              thumbnail: "aaaa"
+            },
+          ]
+
+        });
+      }, 1000)
+
+    }
   }
 </script>
 
