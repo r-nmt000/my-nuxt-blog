@@ -11,39 +11,47 @@
   import PostList from "@/components/posts/PostList";
   export default {
     components: {PostList},
-    asyncData(context, callback) {
-      setTimeout(() => {
-        callback(null, {
-          loadedPosts: [
-            {
-              id: "1",
-              title: "First post",
-              previewText: "aaaab",
-              thumbnail: "aaaa"
-            },
-            {
-              id: "2",
-              title: "Second post",
-              previewText: "aaaa",
-              thumbnail: "aaaa"
-            },
-            {
-              id: "3",
-              title: "Third post",
-              previewText: "aaaa",
-              thumbnail: "aaaa"
-            },
-            {
-              id: "4",
-              title: "Fourth post",
-              previewText: "aaaa",
-              thumbnail: "aaaa"
-            },
-          ]
-
-        });
-      }, 1000)
-
+    asyncData(context) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // resolve({
+          //   loadedPosts: [
+          //     {
+          //       id: "1",
+          //       title: "First post",
+          //       previewText: "aaaab",
+          //       thumbnail: "aaaa"
+          //     },
+          //     {
+          //       id: "2",
+          //       title: "Second post",
+          //       previewText: "aaaa",
+          //       thumbnail: "aaaa"
+          //     },
+          //     {
+          //       id: "3",
+          //       title: "Third post",
+          //       previewText: "aaaa",
+          //       thumbnail: "aaaa"
+          //     },
+          //     {
+          //       id: "4",
+          //       title: "Fourth post",
+          //       previewText: "aaaa",
+          //       thumbnail: "aaaa"
+          //     },
+          //   ]
+          //
+          // });
+          reject(new Error())
+        }, 1000)
+      })
+      .then(data => {
+        return data;
+      })
+      .catch(e => {
+        context.error(e);
+      });
     }
   }
 </script>
