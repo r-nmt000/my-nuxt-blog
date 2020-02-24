@@ -11,47 +11,53 @@
   import PostList from "@/components/posts/PostList";
   export default {
     components: {PostList},
-    asyncData(context) {
+    fetch(context) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          // resolve({
-          //   loadedPosts: [
-          //     {
-          //       id: "1",
-          //       title: "First post",
-          //       previewText: "aaaab",
-          //       thumbnail: "aaaa"
-          //     },
-          //     {
-          //       id: "2",
-          //       title: "Second post",
-          //       previewText: "aaaa",
-          //       thumbnail: "aaaa"
-          //     },
-          //     {
-          //       id: "3",
-          //       title: "Third post",
-          //       previewText: "aaaa",
-          //       thumbnail: "aaaa"
-          //     },
-          //     {
-          //       id: "4",
-          //       title: "Fourth post",
-          //       previewText: "aaaa",
-          //       thumbnail: "aaaa"
-          //     },
-          //   ]
-          //
-          // });
-          reject(new Error())
+          resolve({
+            loadedPosts: [
+              {
+                id: "1",
+                title: "First post",
+                previewText: "aaaab",
+                thumbnail: "aaaa"
+              },
+              {
+                id: "2",
+                title: "Second post",
+                previewText: "aaaa",
+                thumbnail: "aaaa"
+              },
+              {
+                id: "3",
+                title: "Third post",
+                previewText: "aaaa",
+                thumbnail: "aaaa"
+              },
+              {
+                id: "4",
+                title: "Fourth post",
+                previewText: "aaaa",
+                thumbnail: "aaaa"
+              },
+            ]
+
+          });
+          // reject(new Error())
         }, 1000)
       })
       .then(data => {
-        return data;
+        context.store.commit("setPosts", data.loadedPosts);
+        console.log("test")
       })
       .catch(e => {
         context.error(e);
       });
+    },
+    computed: {
+      loadedPosts() {
+        return this.$store.getters.loadedPosts
+      }
     }
   }
 </script>
