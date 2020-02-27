@@ -2,7 +2,6 @@
   <div class="post-page">
     <PostList :posts="loadedPosts"/>
   </div>
-
 </template>
 
 <script>

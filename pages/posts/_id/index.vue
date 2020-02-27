@@ -13,10 +13,10 @@
 </template>
 
 <script>
-  import axios 'axios';
+  import axios from 'axios';
   export default {
     name: "index",
-    asyncData() {
+    asyncData(context) {
       return axios.get('https://my-nuxt-blog-691f1.firebaseio.com/posts/' + context.params.id + '.json')
         .then(res => {
           return {

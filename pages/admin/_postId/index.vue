@@ -1,29 +1,27 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :post="loadedPost"/>
-
+      <AdminPostForm :post="loadedPost" />
     </section>
   </div>
-
 </template>
 
 <script>
+  import axios from 'axios';
   import AdminPostForm from "@/components/admin/AdminPostForm";
 
   export default {
     name: "index",
     layout: "admin",
     components: {AdminPostForm},
-    data() {
-      return {
-        loadedPost: {
-          author: 'Maximilian',
-          title: 'test',
-          content: 'aaaaaa',
-          thumbnailLink: 'aaa'
-        }
-      }
+    asyncData(context) {
+      return axios.get('https://my-nuxt-blog-691f1.firebaseio.com/posts/' + context.params.id + '.json')
+        .then(res => {
+          return {
+            loadedPost: res.data
+          };
+        })
+        .catch(e => context.error(e));
     }
   }
 </script>
