@@ -26,11 +26,10 @@
     },
     methods: {
       onSubmitted(editedPost) {
-        axios.put('https://my-nuxt-blog-691f1.firebaseio.com/posts/' +
-          this.$route.params.postId +
-          '.json', editedPost)
-          .then(res => this.$router.push('/admin'))
-          .catch(e => console.log(e));
+        this.$store.dispatch('editPost', {...editedPost, id:this.$route.params.postId})
+        .then(() => {
+          this.$router.push('/admin')
+        });
       }
     }
   }

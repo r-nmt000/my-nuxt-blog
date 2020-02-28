@@ -6,7 +6,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
   import AdminPostForm from "@/components/admin/AdminPostForm";
     export default {
       name: "index",
@@ -14,10 +13,8 @@
       components: {AdminPostForm},
       methods: {
         onSubmitted(postData) {
-          axios.post('https://my-nuxt-blog-691f1.firebaseio.com/posts.json',
-            {...postData, updatedDate: new Date() })
-          .then(result => console.log(result))
-          .catch(e => console.log(e));
+          this.$store.dispatch('addPost', postData)
+          .then(() => {this.$router.push('/admin')});
         }
       }
 
